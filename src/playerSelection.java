@@ -6,9 +6,10 @@ public class playerSelection {
     public static void main(String[] args) {
         int firstLargestNumber = 0;
         int secondLargestNumber = 0;
-        int firstMax=0;
-        int secondMax=0;
+        int firstMax = 0;
+        int secondMax = 0;
 
+        boolean n = false;
         Scanner input = new Scanner(System.in);
 
         System.out.println("Enter player's Name:");
@@ -24,15 +25,15 @@ public class playerSelection {
         System.out.println("Enter the runs score of the player:");
         int runsScored = input3.nextInt();
 
-        player details = new player(Name,Age,playerType,runsScored);
+        player details = new player(Name, Age, playerType, runsScored);
         details.viewDetails();
         System.out.println("If you want to add above information to the system please follow following instructions.");
-
+        System.out.println("Follow following guid lines to continue the program.");
         System.out.println("*******************************************************************************");
 
         String[] playerNames = {"Kumar Sangakkara", "Mahela Jayawardhana", "Tilakarathne Dilshan", "Upul Tharanga", "Devon Conway", "Glenn Maxwell", "Kane Williamson", "Dhananjaya De Sliva", "Kevin Peterson", "Faf Du Plessis"};
         String[] playerAge = {"43", "44", "44", "36", "30", "32", "30", "30", "41", "36"};
-        String[] playertype = {"batsman","batsman","batsman","batsman","batsman","batsman","batsman","batsman","batsman","batsman"};
+        String[] playertype = {"batsman", "batsman", "batsman", "batsman", "batsman", "batsman", "batsman", "batsman", "batsman", "batsman"};
         String[] runScored = {"1382", "1493", "1153", "407", "473", "1780", "1805", "334", "1176", "1528"};
 
         int[] intPlayerAge = new int[playerAge.length];
@@ -44,6 +45,7 @@ public class playerSelection {
             intRunScored[i] = Integer.parseInt(runScored[i]);
         }
 
+        do {
         System.out.println("Add a palyer details        : Enter A");
         System.out.println("View all players            : Enter V");
         System.out.println("Display two best batmans    : Enter B");
@@ -55,68 +57,74 @@ public class playerSelection {
         System.out.println("Note that:You should have to enter capital letter.");
         String letter = input1.nextLine();
 
-        switch (letter) {
-            case "A":
-                playerNames = addPlayer(playerNames);
-                // following two steps includes only to show that entered value is updating to the array
-                System.out.println("new version:");
-                printAge(playerNames);
 
-                playerAge = addAge(playerAge);
-                // following two steps includes only to show that entered value is updating to the array
-                System.out.println("new version:");
-                printAge(playerAge);
+            switch (letter) {
+                case "A": {
+                    playerNames = addPlayer(playerNames);
+                    // following two steps includes only to show that entered value is updating to the array
+                    System.out.println("new version:");
+                    printAge(playerNames);
 
-                playertype = addPlayertype(playertype);
-                // following two steps includes only to show that entered value is updating to the array
-                System.out.println("new version:");
-                printType(playertype);
+                    playerAge = addAge(playerAge);
+                    // following two steps includes only to show that entered value is updating to the array
+                    System.out.println("new version:");
+                    printAge(playerAge);
 
-                runScored = addRuns(runScored);
-                // following two steps includes only to show that entered value is updating to the array
-                System.out.println("new version:");
-                printRuns(runScored);
+                    playertype = addPlayertype(playertype);
+                    // following two steps includes only to show that entered value is updating to the array
+                    System.out.println("new version:");
+                    printType(playertype);
 
-                break;
-                case "V":
-                System.out.println("player name list:");
-                printWords(playerNames);
-                break;
+                    runScored = addRuns(runScored);
+                    // following two steps includes only to show that entered value is updating to the array
+                    System.out.println("new version:");
+                    printRuns(runScored);
 
-            case "B":
-
-                for(int i:intRunScored){
-                    if (firstLargestNumber<i){
-                        secondLargestNumber=firstLargestNumber;
-                        firstLargestNumber=i;
-                        System.out.println(i);
-                    }
-                    else if(firstLargestNumber<i){
-                        secondLargestNumber=i;
-                    }
+                    break;
                 }
-                for(int i=0; i<intRunScored.length;i++){
-                    if(intRunScored[i]==firstLargestNumber){
-                        firstMax=i;
-                    }
-                for(int j=0; j<intRunScored.length;j++){
-                    if(intRunScored[j]==secondLargestNumber){
-                        secondMax=j;
-                    }
+                case "V": {
+                    System.out.println("player name list:");
+                    printWords(playerNames);
+                    break;
                 }
 
+                case "B": {
+
+                    for (int i : intRunScored) {
+                        if (firstLargestNumber < i) {
+                            secondLargestNumber = firstLargestNumber;
+                            firstLargestNumber = i;
+                            System.out.println(i);
+                        } else if (firstLargestNumber < i) {
+                            secondLargestNumber = i;
+                        }
+                    }
+                    for (int i = 0; i < intRunScored.length; i++) {
+                        if (intRunScored[i] == firstLargestNumber) {
+                            firstMax = i;
+                        }
+                        for (int j = 0; j < intRunScored.length; j++) {
+                            if (intRunScored[j] == secondLargestNumber) {
+                                secondMax = j;
+                            }
+                        }
+
+                    }
+                    System.out.println("Best player 1: "+playerNames[firstMax]);
+                    System.out.println("Best player 2: "+playerNames[secondMax]);
+                    //following two out puts takes to show that best players are correct
+                    System.out.println("first largest number: " + firstLargestNumber);
+                    System.out.println("second largest number: " + secondLargestNumber);
+                    break;
                 }
-                System.out.println(playerNames[firstMax]);
-                System.out.println(playerNames[secondMax]);
-                //following two out puts takes to show that best players are correct
-                System.out.println("first largest number: "+firstLargestNumber);
-                System.out.println("second largest number: "+secondLargestNumber);
-                break;
-            case "E":
-                System.out.println("Thanks for using our program. Have a nice day.");
-        }
+                case "E": {
+                    System.out.println("Thanks for using our program. Have a nice day.");
+                    n = true;
+                }
+            }
+        }while (n==false);
+
     }
-
 
 
     public static String[] addPlayer (String[]playerNames){
