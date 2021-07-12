@@ -1,13 +1,18 @@
 
 
 import java.util.Scanner;
-
 public class playerSelection {
+    public static String Name;
+    public static String Age;
+    public static String playerType;
+    public static String runsScored;
     public static void main(String[] args) {
         int firstLargestNumber = 0;
         int secondLargestNumber = 0;
         int firstMax=0;
         int secondMax=0;
+
+
 
         String[] playerNames = {"Kumar Sangakkara", "Mahela Jayawardhana", "Tilakarathne Dilshan", "Upul Tharanga", "Devon Conway", "Glenn Maxwell", "Kane Williamson", "Dhananjaya De Sliva", "Kevin Peterson", "Faf Du Plessis"};
         String[] playerAge = {"43", "44", "44", "36", "30", "32", "30", "30", "41", "36"};
@@ -23,37 +28,47 @@ public class playerSelection {
             intRunScored[i] = Integer.parseInt(runScored[i]);
         }
 
-        System.out.println("Add a palyer name           : Enter A");
-        System.out.println("View all player             : Enter V");
+        System.out.println("Add a palyer details        : Enter A");
+        System.out.println("If you want to see your entered data : enter G");
+        System.out.println("View all players            : Enter V");
         System.out.println("Display two best batmans    : Enter B");
         System.out.println("To exit                     : Enter E");
         System.out.println(" ");
 
         Scanner input1 = new Scanner(System.in);
         System.out.println("Enter a letter to continue the program.");
+        System.out.println("Note that:You should have to enter capital letter.");
         String letter = input1.nextLine();
 
         switch (letter) {
             case "A":
                 playerNames = addPlayer(playerNames);
+                // following two steps includes only to show that entered value is updating to the array
                 System.out.println("new version:");
                 printAge(playerNames);
 
                 playerAge = addAge(playerAge);
+                // following two steps includes only to show that entered value is updating to the array
                 System.out.println("new version:");
                 printAge(playerAge);
 
                 playertype = addPlayertype(playertype);
+                // following two steps includes only to show that entered value is updating to the array
                 System.out.println("new version:");
                 printType(playertype);
 
                 runScored = addRuns(runScored);
+                // following two steps includes only to show that entered value is updating to the array
                 System.out.println("new version:");
                 printRuns(runScored);
 
                 break;
+
+            case "G":
+                player details = new player(Name,Age,playerType,runsScored);
+                details.viewDetails();
             case "V":
-                System.out.println("new version:");
+                System.out.println("player name list:");
                 printWords(playerNames);
                 break;
 
@@ -82,8 +97,12 @@ public class playerSelection {
                 }
                 System.out.println(playerNames[firstMax]);
                 System.out.println(playerNames[secondMax]);
+                //following two out puts takes to show that best players are correct
                 System.out.println("first largest number: "+firstLargestNumber);
                 System.out.println("second largest number: "+secondLargestNumber);
+                break;
+            case "E":
+                System.out.println("Thanks for using our program. Have a nice day.");
         }
     }
 
@@ -129,6 +148,7 @@ public class playerSelection {
         String[] morePlayers = new String[playertype.length + 1];
         for (int i = 0; i < playertype.length; i++) {
             morePlayers[i] = playertype[i];
+
         }
         Scanner input2 = new Scanner(System.in);
         System.out.println("Enter the player type: ");
