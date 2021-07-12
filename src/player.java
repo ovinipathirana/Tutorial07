@@ -3,6 +3,9 @@ public class player {
     private int Age;
     private String playerType;
     private int runsScored;
+    private int average;
+    private String type;
+    private String pType;
 
     public player(String Name, int Age, String playerType, int runsScored) {
         this.Name=Name;
@@ -17,6 +20,16 @@ public class player {
         System.out.println("Player age      : "+ Age );
         System.out.println("Player type     : "+playerType );
         System.out.println("Runs score      : "+runsScored );
+    }
+    public void averageRuns(int addScore){
+        int average = addScore/15;
+        System.out.println("Average runs of requested player is : "+average);
+
+    }
+
+
+    public void playersType(String pType) {
+        System.out.println("Player type of requested player is: "+pType);
     }
 }
 

@@ -8,6 +8,8 @@ public class playerSelection {
         int secondLargestNumber = 0;
         int firstMax = 0;
         int secondMax = 0;
+        int addScore=0;
+        String pType;
 
         boolean n = false;
         Scanner input = new Scanner(System.in);
@@ -49,6 +51,8 @@ public class playerSelection {
         System.out.println("Add a palyer details        : Enter A");
         System.out.println("View all players            : Enter V");
         System.out.println("Display two best batmans    : Enter B");
+        System.out.println("To chek average of run score: Enter C");
+        System.out.println("To get player type          : Enter D");
         System.out.println("To exit                     : Enter E");
         System.out.println(" ");
 
@@ -63,7 +67,7 @@ public class playerSelection {
                     playerNames = addPlayer(playerNames);
                     // following two steps includes only to show that entered value is updating to the array
                     System.out.println("new version:");
-                    printAge(playerNames);
+                    printWords(playerNames);
 
                     playerAge = addAge(playerAge);
                     // following two steps includes only to show that entered value is updating to the array
@@ -94,7 +98,7 @@ public class playerSelection {
                         if (firstLargestNumber < i) {
                             secondLargestNumber = firstLargestNumber;
                             firstLargestNumber = i;
-                            System.out.println(i);
+
                         } else if (firstLargestNumber < i) {
                             secondLargestNumber = i;
                         }
@@ -115,6 +119,27 @@ public class playerSelection {
                     //following two out puts takes to show that best players are correct
                     System.out.println("first largest number: " + firstLargestNumber);
                     System.out.println("second largest number: " + secondLargestNumber);
+                    break;
+                }
+                case "C":{
+                    Scanner input4= new Scanner(System.in);
+                    System.out.println("Enter the player name number that you want to check average runs:");
+                    int num =input4.nextInt();
+                    for(int l=num-1; l<num;l++){
+                        addScore=addScore+intRunScored[num-1];
+                        details.averageRuns(addScore);
+                    }
+                    break;
+                }
+
+                case "D":{
+                    Scanner input5=new Scanner(System.in);
+                    System.out.println("Enter the player name number that you want to check player type:");
+                    int num2 = input5.nextInt();
+                    for(int l=num2-1; l<num2;l++){
+                        pType=playertype[num2-1];
+                        details.playersType(pType);
+                    }
                     break;
                 }
                 case "E": {
@@ -139,7 +164,7 @@ public class playerSelection {
     }
     public static void printWords (String[]playerNames){
         for (int i = 0; i < playerNames.length; i++) {
-            System.out.print(playerNames[i] + " ");
+            System.out.print((i+1)+") "+playerNames[i] + " ");
         }
         System.out.println(" ");
 
@@ -157,7 +182,7 @@ public class playerSelection {
     }
     public static void printAge (String[]playerAge){
         for (int i = 0; i < playerAge.length; i++) {
-            System.out.print(playerAge[i] + " ");
+            System.out.print((i+1)+") "+playerAge[i] + " ");
         }
         System.out.println(" ");
 
@@ -176,7 +201,7 @@ public class playerSelection {
     }
     public static void printType(String[]playertype){
         for (int i = 0; i < playertype.length; i++) {
-            System.out.print(playertype[i] + " ");
+            System.out.print((i+1)+") "+playertype[i] + " ");
         }
         System.out.println(" ");
 
@@ -194,7 +219,7 @@ public class playerSelection {
     }
     public static void printRuns (String[]runScord){
         for (int i = 0; i < runScord.length; i++) {
-            System.out.print(runScord[i] + " ");
+            System.out.print((i+1)+") "+runScord[i] + " ");
         }
         System.out.println(" ");
 
