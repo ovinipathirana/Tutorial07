@@ -2,17 +2,33 @@
 
 import java.util.Scanner;
 public class playerSelection {
-    public static String Name;
-    public static String Age;
-    public static String playerType;
-    public static String runsScored;
+
     public static void main(String[] args) {
         int firstLargestNumber = 0;
         int secondLargestNumber = 0;
         int firstMax=0;
         int secondMax=0;
 
+        Scanner input = new Scanner(System.in);
 
+        System.out.println("Enter player's Name:");
+        String Name = input.nextLine();
+
+        System.out.println("Enter the age of the player:");
+        int Age = input.nextInt();
+
+        System.out.println("Enter the player type of the player:");
+        Scanner input3 = new Scanner(System.in);
+        String playerType = input3.nextLine();
+
+        System.out.println("Enter the runs score of the player:");
+        int runsScored = input3.nextInt();
+
+        player details = new player(Name,Age,playerType,runsScored);
+        details.viewDetails();
+        System.out.println("If you want to add above information to the system please follow following instructions.");
+
+        System.out.println("*******************************************************************************");
 
         String[] playerNames = {"Kumar Sangakkara", "Mahela Jayawardhana", "Tilakarathne Dilshan", "Upul Tharanga", "Devon Conway", "Glenn Maxwell", "Kane Williamson", "Dhananjaya De Sliva", "Kevin Peterson", "Faf Du Plessis"};
         String[] playerAge = {"43", "44", "44", "36", "30", "32", "30", "30", "41", "36"};
@@ -29,7 +45,6 @@ public class playerSelection {
         }
 
         System.out.println("Add a palyer details        : Enter A");
-        System.out.println("If you want to see your entered data : enter G");
         System.out.println("View all players            : Enter V");
         System.out.println("Display two best batmans    : Enter B");
         System.out.println("To exit                     : Enter E");
@@ -63,11 +78,7 @@ public class playerSelection {
                 printRuns(runScored);
 
                 break;
-
-            case "G":
-                player details = new player(Name,Age,playerType,runsScored);
-                details.viewDetails();
-            case "V":
+                case "V":
                 System.out.println("player name list:");
                 printWords(playerNames);
                 break;

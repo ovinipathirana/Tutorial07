@@ -1,10 +1,10 @@
 public class player {
     private String Name;
-    private String Age;
+    private int Age;
     private String playerType;
-    private String runsScored;
+    private int runsScored;
 
-    public player(String Name, String Age, String playerType, String runsScored) {
+    public player(String Name, int Age, String playerType, int runsScored) {
         this.Name=Name;
         this.Age=Age;
         this.playerType=playerType;
@@ -14,6 +14,9 @@ public class player {
     public void viewDetails() {
         String name;
         System.out.println("Player name     : " + Name);
+        System.out.println("Player age      : "+ Age );
+        System.out.println("Player type     : "+playerType );
+        System.out.println("Runs score      : "+runsScored );
     }
 }
 
